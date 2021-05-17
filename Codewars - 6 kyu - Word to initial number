@@ -2,8 +2,8 @@ def convert(st):
     if st == "": return 0
     number = ""
     a = 0
-    convertDict = {}
-    letterArray = [1, 0, 2, 3, 4, 5, 6, 7, 8, 9]
+    convertDict = {} # will store the letters and number assignments
+    letterArray = [1, 0, 2, 3, 4, 5, 6, 7, 8, 9] # unique order of letter-number substitution.  Given in problem.
     for letter in st.upper():
         if letter not in convertDict:
             convertDict[letter] = letterArray[a]
