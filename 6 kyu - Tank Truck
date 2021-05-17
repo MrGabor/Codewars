@@ -1,0 +1,24 @@
+import math
+
+def tankvol(h, d, vt):
+    a = d*d*math.pi/4 # cross sectional area
+    l = vt/a # length of tank
+    r = d/2 # radius of cross section
+    if h < r:
+        oa = r-h # length of line segment oa
+        theta = math.acos(oa / r) # angle theta in the sketch
+        aslice = a * (2*theta/(2*math.pi)) # area of cross sectional slice represented by 2 theta
+        atri = (r * math.sin(theta) * oa / 2) * 2 # area of triangle OAB * 2
+        agreen = aslice - atri # area of green section
+        fuelvol = agreen * l # volume of fuel
+        return math.floor(fuelvol)
+    elif h == r:
+        return math.floor(vt/2)
+    else: # h > r
+        oa = h-r # length of line segment oa
+        theta = math.acos(oa / r) # angle theta in the sketch
+        aslice = a * (2*theta/(2*math.pi)) # area of cross sectional slice represented by 2 theta
+        atri = (r * math.sin(theta) * oa / 2) * 2 # area of triangle OAB * 2
+        agreen = aslice - atri # area of green section
+        fuelvol = vt - agreen * l # volume of fuel
+        return math.floor(fuelvol)
