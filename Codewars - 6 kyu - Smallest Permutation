@@ -1,0 +1,20 @@
+def min_permutation(n):
+    print(n)
+    if n > -10 and n < 10: return n  #special case, number has only one digit
+    z = 1
+    neg = 0  #temp variables
+    textNum = ""  #the final compiled number
+    numArray = list(str(n))  #break the number into a string array
+    numArray.sort()  #sort the array
+    if numArray[0] == "-":
+        numArray.remove("-")  #remove the dash
+        neg = 1  #flag number as negative
+    while numArray[0] == "0":  #this while loop will keep 'bumping' zeros back until a non-zero number is the first number
+        numArray[0], numArray[z] = numArray[z], numArray[0]
+        z += 1
+    for i in numArray:
+        textNum += i  #reconvert the list into a string
+    if neg == 0:
+        return int(textNum)
+    else:
+        return int("-" + textNum)
