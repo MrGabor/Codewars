@@ -1,0 +1,13 @@
+def last_survivors(string):
+  letterList = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n","o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z","a"]
+  a=0 # defines the position of the letter we are checking
+  maxLength = len(string)
+  while a < maxLength:
+    l = string[a] #this is the letter we will count and replace
+    while string.count(l) > 1:
+      string = string.replace(l,letterList[letterList.index(l)+1],1) #replace 1st instance of letter with next letter from letterList
+      string = string.replace(l,"",1) #remove 2nd instance of letter
+      maxLength-=1 #the location of the last letter to check is decremented
+      a=0 #start the next check at the first letter
+    a+=1 #increment the position of the next letter to check
+  return string
