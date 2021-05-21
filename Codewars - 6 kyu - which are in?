@@ -1,0 +1,12 @@
+def in_array(array1, array2):
+    resultArray = []
+    for string in array1: #iterate through every string to check
+        for checkString in array2: #iterate through every list to check for string inclusion
+            if string in checkString:
+                resultArray.append(string) #if found, add string to resultArray
+                break #only check and add each string once
+    resultArray.sort()
+    for string in resultArray:
+        if resultArray.count(string)>1: #check for duplicates
+            resultArray.remove(string) #remove duplicates
+    return resultArray
